@@ -260,21 +260,19 @@ let darkModeAtivo = false;
 
 botaoDarkMode.addEventListener("click", function(){
 
-    if(darkModeAtivo === false){
+   if(darkModeAtivo === false){
 
-        document.body.style.background = "#111827";
-        document.body.style.color = "white";
+    document.body.classList.add("dark-mode");
 
-        darkModeAtivo = true;
+    darkModeAtivo = true;
 
-    }else{
+}else{
 
-        document.body.style.background = "#f3f4f6";
-        document.body.style.color = "#1f2937";
+    document.body.classList.remove("dark-mode");
 
-        darkModeAtivo = false;
+    darkModeAtivo = false;
 
-    }
+}
 
 });
 
