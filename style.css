@@ -234,3 +234,48 @@ footer{
     }
 
 }
+/* ======================================
+   DARK MODE
+====================================== */
+
+.dark-mode{
+    background:#111827;
+    color:white;
+}
+
+.dark-mode section{
+    background:#1f2937;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#374151;
+    color:white;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select{
+    background:#111827;
+    color:white;
+    border:1px solid #4b5563;
+}
+
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode label,
+.dark-mode p{
+    color:white;
+}
+
+.dark-mode nav{
+    background:#0f172a;
+}
+
+.dark-mode header{
+    background:#020617;
+}
+
+.dark-mode footer{
+    background:#020617;
+}
