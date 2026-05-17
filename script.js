@@ -308,7 +308,7 @@ botaoIA.addEventListener("click", async function(){
 
     try{
 
-const requisicao = await fetch("/.netlify/functions/analisar-ia",
+const requisicao = await fetch("/.netlify-functions-analisar-ia",
                                
                                {
 
