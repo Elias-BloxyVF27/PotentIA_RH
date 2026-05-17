@@ -9,7 +9,7 @@ const express = require("express");
 const cors = require("cors");
 
 const genAI = new GoogleGenerativeAI(
-    "AIzaSyDsbWARemkpqUbDzu7XE2URY236eivJSKM"
+    "AIzaSyAYW6SXyyBNlIjpnKuiHxP06Al3dmSs2ms"
 );
 
 // ==========================================
