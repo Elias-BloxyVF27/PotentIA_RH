@@ -287,6 +287,10 @@ console.log("Todos os scripts foram carregados.");
 // INTEGRAÇÃO COM IA
 // ======================================
 
+// ======================================
+// INTEGRAÇÃO COM IA
+// ======================================
+
 const botaoIA = document.getElementById("botaoIA");
 
 botaoIA.addEventListener("click", async function(){
@@ -296,54 +300,50 @@ botaoIA.addEventListener("click", async function(){
         .value;
 
     if(resposta === ""){
-
         alert("Digite uma resposta.");
-
         return;
-
     }
 
     document.getElementById("resultadoIA").innerHTML =
         "Analisando perfil com IA...";
 
+    const chave = "AIzaSyAYW6SXyyBNlIjpnKuiHxP06Al3dmSs2ms"; // cole sua chave nova aqui
+
+    const prompt = `
+        Você é um especialista em RH.
+        Analise o seguinte perfil: "${resposta}"
+        Informe:
+        - Perfil comportamental
+        - Pontos fortes
+        - Compatibilidade profissional
+    `;
+
     try{
 
-const requisicao = await fetch("/.netlify/functions/analisar-ia",
-                               
-                               {
-
+        const requisicao = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${chave}`,
+            {
                 method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-
-                    texto: resposta
-
+                    contents: [{ parts: [{ text: prompt }] }]
                 })
-
             }
         );
 
         const dados = await requisicao.json();
-console.log(dados);
+
+        const resultado = dados.candidates[0].content.parts[0].text;
+
         document.getElementById("resultadoIA").innerHTML = `
-
             <h3>Resultado da IA</h3>
-
-            <p>${dados.resultado}</p>
-
+            <p>${resultado}</p>
         `;
 
     }catch(erro){
 
         console.log(erro);
-
-        alert("Erro ao conectar com IA.");
+        alert("Erro ao conectar com a IA.");
 
     }
 
