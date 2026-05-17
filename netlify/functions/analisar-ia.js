@@ -1,5 +1,3 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
 exports.handler = async function(event) {
 
   if (event.httpMethod !== "POST") {
@@ -15,10 +13,6 @@ exports.handler = async function(event) {
     };
   }
 
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
   const prompt = `
     Você é um especialista em RH.
     Analise o seguinte perfil: "${texto}"
@@ -28,11 +22,25 @@ exports.handler = async function(event) {
     - Compatibilidade profissional
   `;
 
-  const result = await model.generateContent(prompt);
+  const resposta = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }]
+      })
+    }
+  );
+
+  const dados = await resposta.json();
+
+  const resultado = dados.candidates[0].content.parts[0].text;
 
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ resultado: result.response.text() })
+    body: JSON.stringify({ resultado })
   };
+
 };
