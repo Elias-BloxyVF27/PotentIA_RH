@@ -23,7 +23,7 @@ exports.handler = async function(event) {
   `;
 
   const resposta = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.AIzaSyDsbWARemkpqUbDzu7XE2URY236eivJSKM}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.AIzaSyAYW6SXyyBNlIjpnKuiHxP06Al3dmSs2ms}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
