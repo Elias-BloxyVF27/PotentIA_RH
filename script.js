@@ -307,7 +307,7 @@ botaoIA.addEventListener("click", async function(){
     document.getElementById("resultadoIA").innerHTML =
         "Analisando perfil com IA...";
 
-    const chave = "AIzaSyAYW6SXyyBNlIjpnKuiHxP06Al3dmSs2ms"; // cole sua chave nova aqui
+    const chave = "AIzaSyCjukSL406cQs6QPxkrep-KgP1KKpv342I"; // cole sua chave nova aqui
 
     const prompt = `
         Você é um especialista em RH.
