@@ -308,9 +308,9 @@ botaoIA.addEventListener("click", async function(){
 
     try{
 
-        const requisicao = await fetch(
-            "http://localhost:3000/analisar-ia",
-            {
+const requisicao = await fetch("/.netlify/functions/analisar-ia",
+                               
+                               {
 
                 method: "POST",
 
